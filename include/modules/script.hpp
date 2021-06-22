@@ -19,10 +19,12 @@ namespace modules {
     bool build(builder* builder, const string& tag) const;
 
     static constexpr auto TYPE = "custom/script";
+    static constexpr auto EVENT_EXEC = "exec";
 
    protected:
     chrono::duration<double> process(const mutex_wrapper<function<chrono::duration<double>()>>& handler) const;
     bool check_condition();
+    bool input(const string& action, const string& data);
 
    private:
     static constexpr const char* TAG_LABEL{"<label>"};

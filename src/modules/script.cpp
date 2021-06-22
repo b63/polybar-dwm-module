@@ -215,6 +215,20 @@ namespace modules {
 
     return true;
   }
+
+  bool script_module::input(const string& action, const string& data) {
+      if (action != EVENT_EXEC) {
+          return false;
+      }
+
+      try {
+        process(m_handler);
+      } catch (const exception& err) {
+          halt(err.what());
+      }
+
+      return true;
+  }
 }
 
 POLYBAR_NS_END
